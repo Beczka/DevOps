@@ -17,5 +17,12 @@
 # }
 
 
+# Download az cli
+# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest
+
 # az account list --output table
 # az account set --subscription ""
+
+
+# Install-WindowsFeature -name Web-Server -IncludeManagementTools
+# Install-WindowsFeature Web-App-Dev -IncludeAllSubFeature
