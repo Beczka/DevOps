@@ -5,7 +5,7 @@ Configuration AppServer {
 
         Node AppServer {
 
-            cChocoInstaller installChoco
+            cChocoInstaller Choco
             {
               InstallDir = "c:\choco"
             }
@@ -14,15 +14,8 @@ Configuration AppServer {
                 DependsOn = "[cChocoInstaller]Choco"
                 Ensure = "Present"
                 Name = @(
-                    "googlechrome", 
-                    "7zip", 
-                    "notepadplusplus", 
-                    "putty", 
-                    "cmder", 
-                    "sql-server-management-studio", 
-                    "rdcman", 
-                    "azure-cli", 
-                    "microsoftazurestorageexplorer", 
+                    "googlechrome",
+                    "azure-cli",
                     "azurepowershell"
                     )
             }
@@ -36,6 +29,12 @@ Configuration AppServer {
             {
                 Ensure = "Present"
                 Name = "Web-Mgmt-Tools"
+                DependsOn='[WindowsFeature]IIS'
+            }
+
+            WindowsFeature WebApp {
+                Ensure = "Present"
+                Name = "Web-App-Dev"
                 DependsOn='[WindowsFeature]IIS'
             }
         }
