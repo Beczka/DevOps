@@ -3,6 +3,7 @@ locals {
     HTTP  = 80
     HTTPS = 443
     RDP   = 3389
+    WINRM = 5986
   }
 
   allow_http_rule {
@@ -21,5 +22,11 @@ locals {
     name   = "RDP"
     source = "*"
     port   = "${local.ports["RDP"]}"
+  }
+
+  allow_winrm {
+    name   = "VPN_WINRM"
+    source = "*"
+    port   = "${local.ports["WINRM"]}"
   }
 }

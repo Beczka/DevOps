@@ -1,6 +1,7 @@
 Configuration AppServer {
 
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
+    Import-DscResource -ModuleName 'xNetworking'
     Import-DscResource -ModuleName 'cChoco'
 
         Node AppServer {

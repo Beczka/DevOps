@@ -1,5 +1,5 @@
 locals {
-  registration_url = "https://we-agentservice-prod-1.azure-automation.net/accounts/a263d9ee-258c-4d98-a304-ac7484baf6ba"
+  registration_url = "https://we-agentservice-prod-1.azure-automation.net/accounts/665a8e4b-26d5-494c-9401-3e829ae82dfa"
 }
 
 module "dsc-key" {
@@ -23,7 +23,7 @@ resource "azurerm_virtual_machine_extension" "vm-dsc" {
   settings = <<SETTINGS
 {
     "wmfVersion": "latest",
-    "configuration": {
+        "configuration": {
         "url": "https://automationdsc.blob.core.windows.net/dsc/ConfigurationManager.zip",
         "script": "DscMetaConfig.ps1",
         "function": "DscMetaConfig"

@@ -37,13 +37,13 @@ function Compress-Config($configName) {
     Compress-Archive -Path $files -DestinationPath "packages\$configName.zip" -Force
 }
 
-function Clean() {
-    Remove-Item -Recurse -Force packages
-}
-
 function Upload-Config($configName) {
     Compress-Config $configName
     Set-AzureStorageBlobContent -File "packages\$configName.zip" -Container $containerName -Blob "$configName.zip" -Context $storageAccount.Context -Force
+}
+
+function Clean() {
+    Remove-Item -Recurse -Force packages
 }
 
 function Compile-Configs() {
@@ -63,6 +63,6 @@ function Compile-Configs() {
 }
 
 Prepare
-Upload-Config "ConfigurationManager"
+Upload-Config "CustomConfigurationManager"
 Compile-Configs
 Clean

@@ -9,3 +9,7 @@ variable "common_tags" {
 variable "address_space" {
   type = "string"
 }
+
+variable "env" {
+  type = "string"
+}

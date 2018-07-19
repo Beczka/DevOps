@@ -2,11 +2,11 @@ locals {
   common_tags = "${merge(
         var.common_tags,
         map(
-            "Environment", "Test"
+            "Environment", "${var.env}"
         )
     )}"
 
-  resource_prefix = "TEST"
+  resource_prefix = "${upper(var.env)}"
 }
 
 module "automation-account" {
@@ -52,6 +52,7 @@ module "app-subnet" {
     "${module.common-network-nsg.nsg_rules["allow_http_rule"]}",
     "${module.common-network-nsg.nsg_rules["allow_https_rule"]}",
     "${module.common-network-nsg.nsg_rules["allow_rdp_rule"]}",
+    "${module.common-network-nsg.nsg_rules["allow_winrm"]}",
   ]
 }
 

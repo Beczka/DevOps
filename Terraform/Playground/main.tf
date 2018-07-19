@@ -30,8 +30,9 @@ terraform {
 }
 
 module "test-env" {
-  source        = "./envs/test"
+  source        = "./envs/template"
   region        = "WestEurope"
   common_tags   = "${local.common_tags}"
   address_space = "10.41.0.0/20"
+  env           = "Test"
 }
